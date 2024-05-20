@@ -79,7 +79,7 @@ export const HomePageExplore = [
             },
             {
                 heading : "Django",
-                description : "This course explores advanced topics in HTML5 and CSS3, including animations, transitions, and layout techniques",
+                description : "This course explodsakflsd dsfnlnds in HTML5 and CSS3, including animations, transitions, and layout techniques",
                 level : 'Beginner',
                 lessionNumber : 6
             },
