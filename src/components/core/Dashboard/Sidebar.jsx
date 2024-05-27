@@ -5,18 +5,18 @@ import { useNavigate } from "react-router-dom"
 
 import { sidebarLinks } from "../../../data/dashboard-links"
 import { logout } from "../../../services/operations/authAPI"
-import ConfirmationModal from "../../Common/ConfirmationModal"
+import ConfirmationModal from "../../common/ConfirmationModal"
 import SidebarLink from "./SidebarLink"
 
 export default function Sidebar() {
   const { user, loading: profileLoading } = useSelector(
     (state) => state.profile
-  )
-  const { loading: authLoading } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  );
+  const { loading: authLoading } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   // to keep track of confirmation modal
-  const [confirmationModal, setConfirmationModal] = useState(null)
+  const [confirmationModal, setConfirmationModal] = useState(null);
 
   if (profileLoading || authLoading) {
     return (
@@ -30,8 +30,8 @@ export default function Sidebar() {
     <>
       <div className="flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800 py-10">
         <div className="flex flex-col">
-          {sidebarLinks.map((link) => {
-            if (link.type && user?.accountType !== link.type) return null
+          {sidebarLinks.map((link) => { 
+            if (link.type && user?.accountType !== link.type) return null;
             return (
               <SidebarLink key={link.id} link={link} iconName={link.icon} />
             )
@@ -60,7 +60,9 @@ export default function Sidebar() {
               <VscSignOut className="text-lg" />
               <span>Logout</span>
             </div>
+
           </button>
+          
         </div>
       </div>
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
