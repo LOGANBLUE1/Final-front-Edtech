@@ -9,6 +9,7 @@ import ForgotPassword from "./pages/ForgotPassword"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Dashboard from "./pages/Dashboard"
+import Error from "./pages/Error"
 import MyProfile from "./components/core/Dashboard/MyProfile";
 // Pages
 import Home from "./pages/Home"
@@ -76,10 +77,15 @@ function App() {
               <Dashboard />
             </PrivateRoute>
           }
-        />  
+        >  
+          {/* Route for all users */}
+          <Route path="dashboard/my-profile" element={<MyProfile />} />
+        </Route>
 
-        {/* Route for all users */}
-        <Route path="dashboard/my-profile" element={<MyProfile />} />
+        
+
+        {/* 404 Page */}
+        <Route path="*" element={<Error />} />
     </Routes>
    </div>
   );
