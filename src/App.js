@@ -4,9 +4,12 @@ import {Route, Routes } from "react-router-dom";
 // Components
 import Navbar from "./components/common/Navbar"
 import OpenRoute from "./components/core/Auth/OpenRoute"
+import PrivateRoute from "./components/core/Auth/PrivateRoute"
 import ForgotPassword from "./pages/ForgotPassword"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
+import Dashboard from "./pages/Dashboard"
+import MyProfile from "./components/core/Dashboard/MyProfile";
 // Pages
 import Home from "./pages/Home"
 import Login from "./pages/Login"
@@ -65,6 +68,18 @@ function App() {
             </OpenRoute>
           }
         />
+
+         {/* Private Route - for Only Logged in User */}
+         <Route
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />  
+
+        {/* Route for all users */}
+        <Route path="dashboard/my-profile" element={<MyProfile />} />
     </Routes>
    </div>
   );
