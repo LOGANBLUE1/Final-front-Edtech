@@ -10,16 +10,16 @@ import ProfileDropDown from '../core/Auth/ProfileDropDown';
 import { apiConnector } from '../../services/apiConnector';
 import {categories} from '../../services/apis';
 
-const subLinks = [
-  {
-      title: "python",
-      link:"/catalog/python"
-  },
-  {
-      title: "web dev",
-      link:"/catalog/web-development"
-  },
-];
+// const subLinks = [
+//   {
+//       title: "python",
+//       link:"/catalog/python"
+//   },
+//   {
+//       title: "web dev",
+//       link:"/catalog/web-development"
+//   },
+// ];
 
 function Navbar() {
   const {token} = useSelector((state) => state.auth); 
@@ -28,22 +28,22 @@ function Navbar() {
 
   const location = useLocation();
 
-  // const [subLinks, setSubLinks] = useState([]);
+  const [subLinks, setSubLinks] = useState([]);
 
-  // const fetchSublinks = async() => {
-  //   try {
-  //     const result = await apiConnector("GET", categories.CATEGORIES_API);
-  //     console.log("Printing sublinks : ",result)
-  //     setSubLinks(result.data.data);
+  const fetchSublinks = async() => {
+    try {
+      const result = await apiConnector("GET", categories.CATEGORIES_API);
+      console.log("Printing sublinks : ",result)
+      setSubLinks(result.data.data);
 
-  //   } catch (e) {
-  //     console.log("could not fetch the category list");
-  //   }
-  // };
+    } catch (e) {
+      console.log("could not fetch the category list");
+    }
+  };
 
-  // useEffect(() => {
-  //     fetchSublinks();
-  // },[])
+  useEffect(() => {
+      fetchSublinks();
+  },[])
 
   const matchRoute = (route) => {
     return matchPath({path:route}, location.pathname);
